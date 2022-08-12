@@ -128,7 +128,7 @@ select * from contactor;
 insert into Contactor(patientId, carerId) values (null, 5),
  (null, 19), (null, 12), (null, 14),
  (4, null), (1, null), (2, null),
- (5, null);
+ (5, null),(null, 14);
  
  
  
