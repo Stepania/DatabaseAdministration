@@ -1,4 +1,6 @@
 create database PalliativeCare;
+
+-- drop database palliativecare;
 use PalliativeCare;
 
 
