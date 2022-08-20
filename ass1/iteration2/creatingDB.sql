@@ -3,7 +3,6 @@ create database PalliativeCare;
 -- drop database palliativecare;
 use PalliativeCare;
 
-
 drop table if exists Patient;
 
 create table Patient (
@@ -111,7 +110,53 @@ foreign key (workerId) references Worker(workerId)
 
 -- select * from Contact;
 
+drop table if exists Diagnosis;
+create table Diagnosis (
+diagnosisId integer not null auto_increment,
+description varchar(50),
+primary key (diagnosisId)
+)ENGINE=InnoDB;
+
+select * from Diagnosis;
+
+
+drop tables if exists PatientDiagnoses;
+create table PatientDiagnoses (
+patientId int not null,
+diagnosisId int not null,
+notes text,
+foreign key (patientId) references Patient(patientId),
+foreign key (diagnosisId) references Diagnosis(diagnosisId)
+)ENGINE=InnoDB;
+
 -- Inserting some data
+insert into Diagnosis(description) values ("ALS"), 
+("Alzheimer’s Disease"),
+("Breast Cancer"),
+("Dementia"),
+("Eosinophil Associated Disease (EAD)"),
+("Congestive Heart Failure"),
+("Huntington’s Disease"),
+("Lymphoma"),
+("Pancreatic Cancer"),
+("Stroke"),
+("Pulmonary Fibrosis"),
+("Multiple Myeloma"),
+("Parkinson’s Disease");
+select * from Diagnosis;
+
+
+
+
+insert into PatientDiagnoses (patientId, diagnosisId) values (4,9),(19,6),(1,1),(1,8),
+(1,4),(15,13),(8,4),(9,7),(6,11),(7,1),(2,4),(4,13),(3,5),(5,10),(18,11);
+
+
+select * from patientDiagnoses;
+create index patNumb on PatientDiagnoses (patientId);
+create index diagNumb on PatientDiagnoses (diagnosisId);
+
+
 
 select * from patientCarers;
 insert into patientCarers(patientId, carerId, relationshipToPatient) values 

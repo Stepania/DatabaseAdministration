@@ -35,3 +35,24 @@ where firstName = "Marcia"  and lastName = "Chaney";
 select * from Contactor
 where carerId=14;
 -- right answer is 2!!
+
+/* 4. Create a view of patients' information for a receptionist*/
+create or replace view PatientInfo as
+select  p.patientId, p.title, concat(p.firstName, ' ', p.lastName) as 'Patient fullname',
+TIMESTAMPDIFF(YEAR, p.DOB, CURDATE()) AS Age, p.homePhone, p.mobilePhone, p.email
+from patient p
+order by p.patientId;
+SELECT * FROM palliativecare.patientinfo;
+
+/* 5. Display all patients with the Lymphoma Disease*/
+select p.patientId, concat(p.firstName, ' ', p.lastName) as 'Patient fullname', 
+d.description  as 'Diagnosis' from patient p, diagnosis d, patientDiagnoses pd
+where p.patientId = pd.patientId
+and d.diagnosisId = pd.diagnosisId
+and pd.diagnosisId = 8
+order by pd.diagnosisId asc;
+
+-- checking or testing 
+select * from patientdiagnoses
+-- right answer is only one patient with ID 1
+
