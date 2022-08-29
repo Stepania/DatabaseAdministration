@@ -81,7 +81,6 @@ workerId int not null auto_increment,
 firstName varchar(30) default NULL,
 lastName varchar(50) default NULL,
 title varchar(20) default NULL,
--- description varchar(30) default null,
 available varchar(3), -- have a doubt about it 
 phoneNumber varchar(24) default null,
 email varchar(100) default null,

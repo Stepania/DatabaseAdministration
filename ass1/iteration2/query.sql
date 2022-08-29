@@ -53,6 +53,20 @@ and pd.diagnosisId = 8
 order by pd.diagnosisId asc;
 
 -- checking or testing 
-select * from patientdiagnoses
+select * from patientdiagnoses;
 -- right answer is only one patient with ID 1
+
+
+/* 6 creating view for carer from north island*/
+create or replace view CarerSouthIsland  as
+select concat(firstName, ' ',lastName) as 'Carer full name',TIMESTAMPDIFF(YEAR, DOB, CURDATE()) AS 'age',city
+from carer
+where district = 'South Island';
+select * from CarerSouthIsland
+
+
+
+
+
+
 
